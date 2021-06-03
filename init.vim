@@ -37,8 +37,6 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
 endif
 
 
-let plugin_dir = fnamemodify("$MYVIMRC", ":p:h")."/home/".$USER."/.config/nvim/plugged"
-set rtp+=plugin_dir
 
 " ############################################################################
 " Notes on this vimrc and Vim usage
@@ -143,7 +141,10 @@ if !exists("g:os")
         let g:os = "Windows"
         echom "Windows detected"
     else
+    	" I don't know nothing about OSes outside of *BSD, Linux, or Windows, since I don't use them...
         let g:os = substitute(system('uname'), '\n', '', '')
+	let plugin_dir = fnamemodify("$MYVIMRC", ":p:h")."/home/".$USER."/.config/nvim/plugged"
+	set rtp+=plugin_dir
     endif
 endif
 
