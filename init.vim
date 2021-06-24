@@ -858,7 +858,9 @@ set splitright
 " Keyboard Mappings
 " ############################################################################
 " Remove match highlight
-nnoremap <silent> <Esc> <Esc>:noh<CR> 
+" nnoremap <silent> <Esc> <Esc>:noh<CR>
+" Remove match highlight (alternative)
+nnoremap <C-Esc> :noh<CR>
 " Save file (without quitting)
 " nnoremap <leader><M-s> :w<CR>
 nnoremap ZS :w<CR> 
