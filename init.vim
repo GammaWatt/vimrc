@@ -184,6 +184,7 @@ nnoremap <BS> <Nop>
 " let mapleader="\\"
 let mapleader="\<F3>" 
 
+" set t_kb=<BS>
 
 " ------------------------------------------------------------
 " Dependencies for some plugins in this file
@@ -858,12 +859,14 @@ set splitright
 " Keyboard Mappings
 " ############################################################################
 " Remove match highlight
+nnoremap <silent> zh :noh<CR> 
 " nnoremap <silent> <Esc> <Esc>:noh<CR>
 " Remove match highlight (alternative)
-nnoremap <C-Esc> :noh<CR>
+" nnoremap <C-Esc> :noh<CR>
 " Save file (without quitting)
 " nnoremap <leader><M-s> :w<CR>
-nnoremap ZS :w<CR> 
+nnoremap zz :update<CR> 
+inoremap <M-z><M-z> <C-o>:update
 " Save all open files (without quitting)
 nnoremap <leader><M-S-Z> :wa<CR>
 " Quit  (ZQ)
@@ -906,6 +909,15 @@ nnoremap <leader>gb :<C-U>exe ":buffer " . v:count1<CR>
 
 " Toggle relative numbering
 nnoremap yr :set<Space>relativenumber!<CR>
+
+" Alternative binding for <C-R> so I can have the functionality in terminal
+" without colliding with the reverse-i-search mapping the terminal brings.
+" tnoremap <leader>r <Cmd>:put =nr2char(getchar())<CR>
+tnoremap <leader>r <Cmd>:put "<CR>
+
+
+
+
 
 if g:os == "Windows"
 	" (Windows only, for Cygwin) Open bash prompt at current dir (or run bash args
