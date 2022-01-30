@@ -181,8 +181,8 @@ nnoremap <Space> <Nop>
 nnoremap <BS> <Nop> 
 " Set map leader to spacebar
 " let mapleader="\<Space>"
-" let mapleader="\\"
-let mapleader="\<F3>" 
+let mapleader="\\"
+" let mapleader="\<F3>" 
 
 " set t_kb=<BS>
 
@@ -242,7 +242,6 @@ endif
 " use sign column to show added, modified or removed lines in vcs managed files
 Plug 'mhinz/vim-signify'
 
-
 Plug 'rafi/awesome-vim-colorschemes'
 
 Plug 'sheerun/vim-polyglot'
@@ -262,7 +261,7 @@ Plug 'tpope/vim-git'
 Plug 'preservim/nerdcommenter'
 
 " Ripgrep. Display results in quickfix list (:Rg <pattern> and :Rgroot)
-Plug 'jremmen/vim-ripgrep'
+" Plug 'jremmen/vim-ripgrep'
 
 
 " cs"' == "Hi" to 'Hi'. cs"<p> == "Hi" to <p>Hi</p>. ds" "hi":hi. More at repo
@@ -367,10 +366,10 @@ let g:snipMate = { 'snippet_version': 1 }
 "
 " filenames like *.xml, *.html, *.xhtml, ...
 " These are the file extensions where this plugin is enabled.
-let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.vue'
+let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.vue,*.jsx,*.tsx,*.js'
 " filenames like *.xml, *.xhtml, ...
 " This will make the list of non-closing tags self-closing in the specified files.
-let g:closetag_xhtml_filenames = '*.xhtml,*.jsx'
+let g:closetag_xhtml_filenames = '*.xhtml,*.jsx,*.tsx'
 " Shortcut for closing tags, default is '>'
 let g:closetag_shortcut = '>'
 " Add > at current position without closing the current tag, default is ''
@@ -732,6 +731,7 @@ syntax on
 
 " To use system clipboard for cut and paste (works, but not the way I want it)
 " set clipboard+=unnamedplus
+set clipboard=unnamedplus
 
 " For autoindent
 set autoindent smartindent
@@ -858,6 +858,17 @@ set splitright
 " ############################################################################
 " Keyboard Mappings
 " ############################################################################
+"
+" Use :help map-which-keys
+" to find suggestions unused keys you can map to
+" Also use :help index
+" for a list keys mapped by default
+" also:
+" :map
+" :imap
+" 
+" for a list of use defined keys
+"
 " Remove match highlight
 nnoremap <silent> zh :noh<CR> 
 " nnoremap <silent> <Esc> <Esc>:noh<CR>
@@ -865,22 +876,22 @@ nnoremap <silent> zh :noh<CR>
 " nnoremap <C-Esc> :noh<CR>
 " Save file (without quitting)
 " nnoremap <leader><M-s> :w<CR>
-nnoremap zz :update<CR> 
-inoremap <M-z><M-z> <C-o>:update
-" Save all open files (without quitting)
-nnoremap <leader><M-S-Z> :wa<CR>
-" Quit  (ZQ)
-nnoremap <leader><M-q> :q<CR>
-" Quit all
-nnoremap <leader><M-S-q> :qa<CR>
-" Quit and save all tabs
-nnoremap <leader>ZX :qwa<CR>
+nnoremap <Space>S :update<CR> 
+inoremap <M-Space>S <Cmd>:update
+" " Save all open files (without quitting)
+" nnoremap <leader><M-S-Z> :wa<CR>
+" " Quit  (ZQ) (or use <C-W>q)
+" nnoremap <leader><M-q> :q<CR>
+" " Quit all
+" nnoremap <leader><M-S-q> :qa<CR>
+" " Quit and save all tabs
+" nnoremap <leader>ZX :qwa<CR>
 " Open new tab
 nnoremap <leader><leader>t :tabnew<CR>
-" Open vertical pane
-nnoremap <leader><leader>v :vsp<CR>:wincmd p<CR>
-" Open horizontal pane
-nnoremap <leader><leader>h :sp<CR>:wincmd p<CR>
+" " Open vertical pane (use <C-W>v)
+" nnoremap <leader><leader>v :vsp<CR>:wincmd p<CR>
+" " Open horizontal pane (use <C-W>s)
+" nnoremap <leader><leader>h :sp<CR>:wincmd p<CR>
 " Open terminal in new tab
 nnoremap <leader><leader><M-t> :tabnew<CR>:terminal<CR>i
 " Open terminal in new vertical pane
@@ -892,8 +903,8 @@ noremap <C-J> <C-W>j
 noremap <C-K> <C-W>k
 noremap <C-H> <C-W>h
 noremap <C-L> <C-W>l
-" Make paste easy access in insert mode
-inoremap <C-Space><C-v> <C-o>"+p
+" " Make paste easy access in insert mode (use <C-R>+)
+" inoremap <C-Space><C-v> <C-o>"+p
 " remap gf to open file below cursor in vert split. Good for explor proj deps.
 nnoremap gf :vertical wincmd f<CR>
 
@@ -912,8 +923,12 @@ nnoremap yr :set<Space>relativenumber!<CR>
 
 " Alternative binding for <C-R> so I can have the functionality in terminal
 " without colliding with the reverse-i-search mapping the terminal brings.
-" tnoremap <leader>r <Cmd>:put =nr2char(getchar())<CR>
-tnoremap <leader>r <Cmd>:put "<CR>
+tnoremap <leader>r <Cmd>:put =getreg(nr2char(getchar()))<CR>
+inoremap <leader>r <Cmd>:put =getreg(nr2char(getchar()))<CR>
+
+
+
+
 
 
 
